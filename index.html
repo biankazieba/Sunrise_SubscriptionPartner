@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+
+<body class="xl:mt-10 md:mt-16 mt-5">
+    <div class="container mx-auto ">
+        <form class="max-w-lg mx-3 xl:mx-auto md:mx-auto">
+            <h1 class="xl:text-2xl text-lg font-bold color-secondary">Titel</h1>
+            <h2 class="xl:text-md text-md font-bold my-2 lg:my-2 color-primary">Beschreibung</h2>
+            <div class="sm:grid-cols-2 gap-4">
+                <div class="gap-4">
+                    <div class="flex flex-col">
+                        <h4 class="mt-5 mb-2 xl:mb-5 font-bold color-primary text-md">Geben Sie Ihre Daten ein:</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 pb-4">
+                            <div class="flex flex-col">
+                                <label for="Firmenname" class="label">Firmenname</label>
+                                <input type="text" id="Firmenname" name="Firmenname" class="input-primary w-3/4">
+                            </div>
+                        </div>
+                        <div class="flex flex-row pb-3 space-x-5">
+                            <div class="flex flex-col">
+                                <label for="PLZ" class="label">PLZ</label>
+                                <input type="text" id="PLZ" name="PLZ" class="input-primary w-20" pattern="[0-9]{4}"
+                                    title="Bitte geben Sie genau 4 Zahlen ein">
+                            </div>
+
+                            <div class="flex flex-col">
+                                <label for="Ortschaft" class="label">Ortschaft</label>
+                                <input type="text" id="Ortschaft" name="Ortschaft" class="input-primary w-44">
+                            </div>
+                        </div>
+                        <div
+                            class="flex flex-col md:flex-row flex-row pb-5 md:pb-5 xl:pb-5 md:space-x-3 lg:space-x-3 space-y-2 md:space-y-0 space-y-0">
+                            <div class="flex flex-col">
+                                <label for="Kabelanschluss" class="label">Abos Kabelanschluss</label>
+                                <input type="text" id="Kabelanschluss" name="Kabelanschluss"
+                                    class="input-primary w-3/4 md:w-full" pattern="[0-9]+"
+                                    title="Bitte geben Sie eine Zahl ein">
+                            </div>
+                            <div class="flex flex-col ">
+                                <label for="Sunrise" class="label">Abo Sunrise KAI</label>
+                                <input type="text" id="Sunrise" name="Sunrise"
+                                    class="input-primary w-1/3 md:w-24 lg:w-24" pattern="[0-9]+"
+                                    title="Bitte geben Sie eine Zahl ein">
+                            </div>
+                            <div class="flex flex-col">
+                                <label for="Yallo" class="label">Abo Yallo KAI</label>
+                                <input type="text" id="Yallo" name="Yallo" class="input-primary w-1/3 md:w-24 lg:w-24"
+                                    pattern="[0-9]+" title="Bitte geben Sie eine Zahl ein">
+                            </div>
+                            <div class="flex flex-col">
+                                <label for="UPC" class="label">Abo UPC KAI</label>
+                                <input type="text" id="UPC" name="UPC" class="input-primary w-1/3 md:w-24 lg:w-24"
+                                    pattern="[0-9]+" title="Bitte geben Sie eine Zahl ein">
+                            </div>
+                        </div>
+                        <div id="inputContainer"></div>
+                        <button class="flex items-center cursor-pointer space-x-3" id="addButton">
+                            <img alt="" src="./assets/img/plus.svg" class="w-5">
+                            <p class="color-secondary text-sm font-bold">Weitere Ortschaft hinzufügen</p>
+                        </button>
+                        <div class="pt-3 pb-2 md:pb-5 xl:pb-5 space-y-3">
+                            <div class="">
+                                <label for="Kabelanschluss" class="label">Grundpreis für den Kabelanschluss pro
+                                    Monat</label>
+                                <input type="text" id="Kabelanschluss" name="Kabelanschluss"
+                                    class="input-primary w-16 md:w-24 lg:w-24 float-right" pattern="[0-9]+"
+                                    title="Bitte geben Sie eine Zahl ein">
+                            </div>
+                            <div class="">
+                                <label for="Sunrise" class="label">Obligatorische Urheberrechte</label>
+                                <input type="text" id="Sunrise" name="Sunrise"
+                                    class="input-primary w-16 md:w-24 lg:w-24 float-right" pattern="[0-9]+"
+                                    title="Bitte geben Sie eine Zahl ein">
+                            </div>
+                            <div class="">
+                                <label for="Yallo" class="label">Total MwSt, 7.7%</label>
+                                <input type="text" id="Yallo" name="Yallo"
+                                    class="input-primary w-16 md:w-24 lg:w-24 float-right" pattern="[0-9]+"
+                                    title="Bitte geben Sie eine Zahl ein">
+                            </div>
+                            <div class="">
+                                <label for="Total" class="label font-bold">Total, inkl. MwSt.</label>
+                                <input type="text" id="Total" name="Total"
+                                    class="input-primary w-16 md:w-24 lg:w-24 float-right" pattern="[0-9]+"
+                                    title="Bitte geben Sie eine Zahl ein">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" id="submit" class="submit lg:mt-0 mt-3">
+                    Absenden
+                </button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
