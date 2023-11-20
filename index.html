@@ -6,71 +6,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/style.css">
 </head>
 
-<body class="xl:mt-10 md:mt-16 mt-5">
-    <div class="container mx-auto ">
-        <form class="max-w-lg mx-3 xl:mx-auto md:mx-auto">
-            <h1 class="xl:text-2xl text-lg font-bold color-secondary">Titel</h1>
-            <h2 class="xl:text-md text-md font-bold my-2 lg:my-2 color-primary">Beschreibung</h2>
+<body>
+    <div class="flex flex-row w-full border-b-2 py-3 px-10 justify-between items-center">
+        <div><img alt="" src="./assets/img/SunriseLogo.png" class="lg:w-14 md:w-14 w-10"></div>
+        <div><select id="language-select" class="w-28 py-1 pl-2 rounded text-sm float-right">
+                <option value="de">Deutsch</option>
+                <option value="fr">Français</option>
+            </select>
+        </div>
+    </div>
+    <div class="container mx-auto lg:mt-10 md:mt-10 mt-5">
+        <form class="max-w-lg mx-3 xl:mx-auto md:mx-auto" id="myForm">
+            <h1 class="xl:text-3xl text-lg font-bold color-secondary" id="title">Abonnenten per 01.01.2024</h1>
+            <h2 class="xl:text-sm text-md my-2 lg:my-2 color-primary" id="description">Es ist wieder Zeit, Sie um die
+                aktuelle Angabe der
+                in Ihrem Netz angeschlossenen Abonnenten zu bitten. Diese Daten bilden die Grundlage für die korrekte
+                Verrechnung Ihres mit uns abgeschlossenen Signalfeed- und/oder Maintenance-Vertrages und/oder SOC
+                Penetrations-Berechnung für das Jahr 2024.</h2>
             <div class="sm:grid-cols-2 gap-4">
                 <div class="gap-4">
                     <div class="flex flex-col">
-                        <h4 class="mt-5 mb-2 xl:mb-5 font-bold color-primary text-md">Geben Sie Ihre Daten ein:</h4>
+                        <h4 class="mt-5 mb-2 xl:mb-5 font-bold color-primary text-sm" id="data_title">Geben Sie Ihre
+                            Daten ein:</h4>
                         <div class="grid grid-cols-1 sm:grid-cols-2 pb-4">
                             <div class="flex flex-col">
-                                <label for="Firmenname" class="label">Firmenname</label>
+                                <label for="Firmenname" class="label" id="company">Firmenname</label>
                                 <input type="text" id="Firmenname" name="Firmenname" class="input-primary w-3/4">
                             </div>
                         </div>
-                        <div class="flex flex-row pb-3 space-x-5">
-                            <div class="flex flex-col">
-                                <label for="PLZ" class="label">PLZ</label>
-                                <input type="text" id="PLZ" name="PLZ" class="input-primary w-20" pattern="[0-9]{4}"
-                                    title="Bitte geben Sie genau 4 Zahlen ein">
+                        <div class="originalDiv">
+                            <div class="flex flex-row pb-3 space-x-5">
+                                <div class="flex flex-col">
+                                    <label for="PLZ" class="label">PLZ</label>
+                                    <input type="text" id="PLZ" name="PLZ" class="input-primary w-20" pattern="[0-9]{4}"
+                                        title="Bitte geben Sie genau 4 Zahlen ein">
+                                </div>
+                                <div class="flex flex-col">
+                                    <label for="Ortschaft" class="label" id="locality">Ortschaft</label>
+                                    <input type="text" id="Ortschaft" name="Ortschaft" class="input-primary w-44">
+                                </div>
+                                <button class="delete cursor-pointer w-full" onclick="deleteDiv(this)">
+                                    <img alt="" src="./assets/img/close.svg" class="w-6 float-right mt-2">
+                                </button>
                             </div>
-
-                            <div class="flex flex-col">
-                                <label for="Ortschaft" class="label">Ortschaft</label>
-                                <input type="text" id="Ortschaft" name="Ortschaft" class="input-primary w-44">
+                            <div
+                                class="flex flex-col md:flex-row flex-row pb-5 md:pb-5 xl:pb-5 md:space-x-3 lg:space-x-3 space-y-2 md:space-y-0">
+                                <div class="flex flex-col">
+                                    <label for="Kabelanschluss" class="label">Abo Kabelanschluss</label>
+                                    <input type="text" id="Kabelanschluss" name="Kabelanschluss"
+                                        class="input-primary w-3/4 md:w-full" pattern="[0-9]+"
+                                        title="Bitte geben Sie eine Zahl ein">
+                                </div>
+                                <div class="flex flex-col">
+                                    <button data-tooltip-target="tooltip-right" data-tooltip-placement="right"
+                                        type="button" class="h-min mt-7">
+                                        <img alt="" src="./assets/img/info-circle.svg" class="w-5 ml-1">
+                                    </button>
+                                    <div id="tooltip-right" role="tooltip"
+                                        class="absolute z-10 w-64 invisible inline-block px-3 py-2 text-xs border border-red-600 bg-white rounded-lg opacity-0 tooltip">
+                                        Tragen Sie alle durch Sie verrechneten Kabelanschlüssen ein.
+                                        Alle KAi Produkte von Sunrise müssen Sie nicht mehr deklarieren.
+                                        Diese werden wir unserseits dazu addieren und Ihnen im Nachgang rückbestätigen.
+                                        <div class="tooltip-arrow" data-popper-arrow></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div
-                            class="flex flex-col md:flex-row flex-row pb-5 md:pb-5 xl:pb-5 md:space-x-3 lg:space-x-3 space-y-2 md:space-y-0 space-y-0">
-                            <div class="flex flex-col">
-                                <label for="Kabelanschluss" class="label">Abos Kabelanschluss</label>
-                                <input type="text" id="Kabelanschluss" name="Kabelanschluss"
-                                    class="input-primary w-3/4 md:w-full" pattern="[0-9]+"
-                                    title="Bitte geben Sie eine Zahl ein">
-                            </div>
-                            <div class="flex flex-col ">
-                                <label for="Sunrise" class="label">Abo Sunrise KAI</label>
-                                <input type="text" id="Sunrise" name="Sunrise"
-                                    class="input-primary w-1/3 md:w-24 lg:w-24" pattern="[0-9]+"
-                                    title="Bitte geben Sie eine Zahl ein">
-                            </div>
-                            <div class="flex flex-col">
-                                <label for="Yallo" class="label">Abo Yallo KAI</label>
-                                <input type="text" id="Yallo" name="Yallo" class="input-primary w-1/3 md:w-24 lg:w-24"
-                                    pattern="[0-9]+" title="Bitte geben Sie eine Zahl ein">
-                            </div>
-                            <div class="flex flex-col">
-                                <label for="UPC" class="label">Abo UPC KAI</label>
-                                <input type="text" id="UPC" name="UPC" class="input-primary w-1/3 md:w-24 lg:w-24"
-                                    pattern="[0-9]+" title="Bitte geben Sie eine Zahl ein">
-                            </div>
-                        </div>
-                        <div id="inputContainer"></div>
-                        <button class="flex items-center cursor-pointer space-x-3" id="addButton">
+                        <button class="flex items-center cursor-pointer space-x-3" id="addButton"
+                            onclick="duplicateDiv(event)">
                             <img alt="" src="./assets/img/plus.svg" class="w-5">
                             <p class="color-secondary text-sm font-bold">Weitere Ortschaft hinzufügen</p>
                         </button>
                         <div class="pt-3 pb-2 md:pb-5 xl:pb-5 space-y-3">
                             <div class="">
-                                <label for="Kabelanschluss" class="label">Grundpreis für den Kabelanschluss pro
+                                <label for="KabelanschlussPrice" class="label">Grundpreis für den Kabelanschluss pro
                                     Monat</label>
-                                <input type="text" id="Kabelanschluss" name="Kabelanschluss"
+                                <input type="text" id="KabelanschlussPrice" name="KabelanschlussPrice"
                                     class="input-primary w-16 md:w-24 lg:w-24 float-right" pattern="[0-9]+"
                                     title="Bitte geben Sie eine Zahl ein">
                             </div>
@@ -81,7 +96,10 @@
                                     title="Bitte geben Sie eine Zahl ein">
                             </div>
                             <div class="">
-                                <label for="Yallo" class="label">Total MwSt, 7.7%</label>
+                                <label for="Yallo" class="label">Total MwSt, 8.1%</label>
+                                <input checked id="red-checkbox" type="checkbox" value=""
+                                    class="w-4 h-4 ml-10 text-red-600 bg-gray-100 border-gray-300 rounded">
+                                <label for="red-checkbox" class="text-xs">0 MwSt befreit</label>
                                 <input type="text" id="Yallo" name="Yallo"
                                     class="input-primary w-16 md:w-24 lg:w-24 float-right" pattern="[0-9]+"
                                     title="Bitte geben Sie eine Zahl ein">
@@ -102,6 +120,8 @@
         </form>
     </div>
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/exceljs/dist/exceljs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.js"></script>
 </body>
 
 </html>
