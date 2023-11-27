@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="flex flex-row w-full border-b-2 py-3 px-10 justify-between items-center">
+    <div class="flex flex-row w-full border-b-2 py-3 xl:px-10 px-5 justify-between items-center">
         <div><img alt="" src="./assets/img/SunriseLogo.png" class="lg:w-14 md:w-14 w-10"></div>
         <div><select id="language-select" class="w-28 py-1 pl-2 rounded text-sm float-right">
                 <option value="de">Deutsch</option>
@@ -19,31 +19,41 @@
             </select>
         </div>
     </div>
-    <div class="container mx-auto lg:mt-10 md:mt-10 mt-5">
+    <div class="container mx-auto lg:mt-10 md:mt-10 mt-5" id="form">
         <form class="max-w-lg mx-3 xl:mx-auto md:mx-auto" id="myForm">
             <h1 class="xl:text-3xl text-lg font-bold color-secondary" id="title">Abonnenten per 01.01.2024</h1>
             <h2 class="xl:text-sm text-md my-2 lg:my-2 color-primary" id="description">Es ist wieder Zeit, Sie um die
                 aktuelle Angabe der
                 in Ihrem Netz angeschlossenen Abonnenten zu bitten. Diese Daten bilden die Grundlage für die korrekte
-                Verrechnung Ihres mit uns abgeschlossenen Signalfeed- und/oder Maintenance-Vertrages und/oder SOC
-                Penetrations-Berechnung für das Jahr 2024.</h2>
+                Verrechnung Ihres mit uns abgeschlossenen Signalfeed- und/oder Maintenance-Vertrages.</h2>
             <div class="sm:grid-cols-2 gap-4">
                 <div class="gap-4">
                     <div class="flex flex-col">
-                        <h4 class="mt-5 mb-2 xl:mb-5 font-bold color-primary text-sm" id="data_title">Geben Sie Ihre
+                        <h4 class="mt-5 mb-2 xl:mb-5 font-bold color-primary text-md" id="data_title">Geben Sie Ihre
                             Daten ein:</h4>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 pb-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 pb-2">
                             <div class="flex flex-col">
                                 <label for="Firmenname" class="label" id="company">Firmenname</label>
                                 <input type="text" id="Firmenname" name="Firmenname" class="input-primary w-3/4">
                             </div>
                         </div>
+                        <h5 class="mt-2 xl:mb-5 color-primary text-sm" id="contact_data">Kontaktperson bei Rückfragen:</h5>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 pb-4">
+                            <div class="flex flex-col">
+                                <label for="Kontaktname" class="label" id="contact_name">Name und Nachname</label>
+                                <input type="text" id="Kontaktname" name="Kontaktname" class="input-primary w-3/4">
+                            </div>
+                            <div class="flex flex-col">
+                                <label for="Kontaktmail" class="label" id="contact_mail">Mail</label>
+                                <input type="text" id="Kontaktmail" name="Kontaktmail" class="input-primary w-3/4">
+                            </div>
+                        </div>
                         <div class="originalDiv">
                             <div class="flex flex-row pb-3 space-x-5">
                                 <div class="flex flex-col">
-                                    <label for="PLZ" class="label">PLZ</label>
-                                    <input type="text" id="PLZ" name="PLZ" class="input-primary w-20" pattern="[0-9]{4}"
-                                        title="Bitte geben Sie genau 4 Zahlen ein">
+                                    <label for="PLZ" class="label" id="plz">PLZ</label>
+                                    <input type="text" id="PLZ" name="PLZ" class="input-primary w-20"
+                                        pattern="[0-9]{4}">
                                 </div>
                                 <div class="flex flex-col">
                                     <label for="Ortschaft" class="label" id="locality">Ortschaft</label>
@@ -56,10 +66,10 @@
                             <div
                                 class="flex flex-col md:flex-row flex-row pb-5 md:pb-5 xl:pb-5 md:space-x-3 lg:space-x-3 space-y-2 md:space-y-0">
                                 <div class="flex flex-col">
-                                    <label for="Kabelanschluss" class="label">Abo Kabelanschluss</label>
+                                    <label for="Kabelanschluss" class="label" id="abo">Abo Kabelanschluss</label>
                                     <input type="text" id="Kabelanschluss" name="Kabelanschluss"
                                         class="input-primary w-3/4 md:w-full" pattern="[0-9]+"
-                                        title="Bitte geben Sie eine Zahl ein">
+                                        title="Please type a number">
                                 </div>
                                 <div class="flex flex-col">
                                     <button data-tooltip-target="tooltip-right" data-tooltip-placement="right"
@@ -79,33 +89,33 @@
                         <button class="flex items-center cursor-pointer space-x-3" id="addButton"
                             onclick="duplicateDiv(event)">
                             <img alt="" src="./assets/img/plus.svg" class="w-5">
-                            <p class="color-secondary text-sm font-bold">Weitere Ortschaft hinzufügen</p>
+                            <p class="color-secondary text-sm font-bold" id="add_locality">Weitere Ortschaft hinzufügen
+                            </p>
                         </button>
                         <div class="pt-3 pb-2 md:pb-5 xl:pb-5 space-y-3">
                             <div class="">
-                                <label for="KabelanschlussPrice" class="label">Grundpreis für den Kabelanschluss pro
-                                    Monat</label>
-                                <input type="text" id="KabelanschlussPrice" name="KabelanschlussPrice"
+                                <label for="KabelanschlussPrice" class="label" id="basic_price">Grundpreis für den Kabelanschluss pro Monat</label>
+                                <input type="text" id="KabelanschlussPrice" name="KabelanschlussPreis"
                                     class="input-primary w-16 md:w-24 lg:w-24 float-right" pattern="[0-9]+"
                                     title="Bitte geben Sie eine Zahl ein">
                             </div>
                             <div class="">
-                                <label for="Sunrise" class="label">Obligatorische Urheberrechte</label>
-                                <input type="text" id="Sunrise" name="Sunrise"
+                                <label for="Sunrise" class="label" id="copyrights">Obligatorische Urheberrechte (GT1)</label>
+                                <input type="text" id="Sunrise" name="GT1"
                                     class="input-primary w-16 md:w-24 lg:w-24 float-right" pattern="[0-9]+"
                                     title="Bitte geben Sie eine Zahl ein">
                             </div>
                             <div class="">
-                                <label for="Yallo" class="label">Total MwSt, 8.1%</label>
+                                <label for="Yallo" class="label" id="totalMwSt">Total MwSt, 8.1%</label>
                                 <input checked id="red-checkbox" type="checkbox" value=""
                                     class="w-4 h-4 ml-10 text-red-600 bg-gray-100 border-gray-300 rounded">
-                                <label for="red-checkbox" class="text-xs">0 MwSt befreit</label>
+                                <label for="red-checkbox" class="text-xs" id="mwstCheck">MwSt befreit</label>
                                 <input type="text" id="Yallo" name="Yallo"
                                     class="input-primary w-16 md:w-24 lg:w-24 float-right" pattern="[0-9]+"
                                     title="Bitte geben Sie eine Zahl ein">
                             </div>
                             <div class="">
-                                <label for="Total" class="label font-bold">Total, inkl. MwSt.</label>
+                                <label for="Total" class="label font-bold" id="total">Total, inkl. MwSt.</label>
                                 <input type="text" id="Total" name="Total"
                                     class="input-primary w-16 md:w-24 lg:w-24 float-right" pattern="[0-9]+"
                                     title="Bitte geben Sie eine Zahl ein">
@@ -114,7 +124,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" id="submit" class="submit lg:mt-0 mt-3">
+                <button type="submit" id="submit" class="submit lg:mt-0 mt-3 mb-5">
                     Absenden
                 </button>
         </form>
