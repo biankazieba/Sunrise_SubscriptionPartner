@@ -4,20 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="icon" href="Sunrise_Aurora_Logo.png" type="image/icon type">
+    <title>Sunrise Subscriptions 2024</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.css" rel="stylesheet" />
 </head>
 
 <body>
-    <div id="message" class="font-bold px-5"></div>
+    <div id="message" class="font-bold px-5 fixed w-full"></div>
     <div class="flex flex-row w-full border-b-2 py-3 xl:px-10 px-5 justify-between items-center">
-        <div><img alt="" src="./assets/img/SunriseLogo.png" class="lg:w-14 md:w-14 w-10"></div>
+        <div><img alt="" src="SunriseLogo.png" class="lg:w-14 md:w-14 w-10"></div>
         <div><select id="language-select" class="w-28 py-1 pl-2 rounded text-sm pb-1 float-right">
                 <option value="de">Deutsch</option>
                 <option value="fr">Français</option>
             </select>
-        </div>
+        <div>
     </div>
     <div class="container mx-auto lg:mt-10 md:mt-10 mt-5">
         <form class="max-w-lg mx-3 xl:mx-auto md:mx-auto" id="form">
@@ -45,38 +46,33 @@
                             </div>
                             <div class="flex flex-col">
                                 <label for="Kontaktperson_Mail" class="text-sm pb-1" id="contact_mail">Mail</label>
-                                <input required type="text" id="Kontaktperson_Mail" name="Kontaktperson_Mail" class="w-3/4 h-8 border-2 border-solid border-gray-300 rounded">
+                                <input required id="Kontaktperson_Mail" name="Kontaktperson_Mail" type="email" class="w-3/4 h-8 border-2 border-solid border-gray-300 rounded">
                             </div>
                         </div>
                         <div class="originalDiv">
                             <div class="flex flex-row pb-3 space-x-5">
                                 <div class="flex flex-col">
-                                    <label for="PLZ" class="text-sm pb-1" id="plz">PLZ</label>
-                                    <input required type="text" id="PLZ" name="PLZ" class=" w-20 h-8 border-2 border-solid border-gray-300 rounded"
-                                        pattern="[0-9]{4}">
+                                    <label for="PLZ" class="text-sm pb-1" id="postleitzahl">PLZ</label>
+                                    <input required type="text" id="PLZ" name="PLZ" class="w-20 h-8 border-2 border-solid border-gray-300 rounded" pattern="[0-9]{4}">
                                 </div>
                                 <div class="flex flex-col">
                                     <label for="Ortschaft" class="text-sm pb-1" id="locality">Ortschaft</label>
-                                    <input required type="text" id="Ortschaft" name="Ortschaft" class=" w-44 h-8 border-2 border-solid border-gray-300 rounded">
+                                    <input required type="text" id="Ortschaft" name="Ortschaft" class="w-44 h-8 border-2 border-solid border-gray-300 rounded">
                                 </div>
                                 <button id="delete" class="delete cursor-pointer w-full hidden" onclick="deleteDiv(this)">
-                                    <img alt="" src="./assets/img/close.svg" class="w-6 float-right mt-2">
+                                    <img alt="" src="close.svg" class="w-6 float-right mt-2">
                                 </button>
                             </div>
                             <div class="flex md:flex-row flex-row pb-5 md:pb-5 xl:pb-5 md:space-x-3 lg:space-x-3 space-y-2 md:space-y-0">
                                 <div class="flex-col sm:w-2/3">
                                     <label for="Abo_Kabelanschluss" class="text-sm pb-1" id="abo">Abo Kabelanschluss</label>
-                                    <input required type="text" id="Abo_Kabelanschluss" name="Abo_Kabelanschluss"
-                                        class="w-3/4 md:w-full sm:w-11/12 h-8 border-2 border-solid border-gray-300 rounded" pattern="[0-9]+"
-                                        title="Please type a number">
+                                    <input required type="text" id="Abo_Kabelanschluss" name="Abo_Kabelanschluss" class="w-3/4 md:w-full sm:w-11/12 h-8 border-2 border-solid border-gray-300 rounded" pattern="[0-9]+" title="Please type a number">
                                 </div>
                                 <div class="flex-col sm:w-1/3">
-                                    <button id="infoButton" data-tooltip-target="tooltip-right" data-tooltip-placement="right"
-                                        type="button" class="h-min xl:mt-7 md:mt-7 sm:mt-5 mt-5">
-                                        <img alt="" src="./assets/img/info-circle.svg" class="w-5 ml-1">
+                                    <button id="infoButton" data-tooltip-target="tooltip-right" data-tooltip-placement="right" type="button" class="h-min xl:mt-7 md:mt-7 sm:mt-5 mt-5" onclick="duplicateDiv(event)">
+                                        <img alt="" src="info-circle.svg" class="w-5 ml-1">
                                     </button>
-                                    <div id="tooltip-right" role="tooltip"
-                                        class="absolute z-10 w-64 invisible inline-block px-3 py-2 text-xs border border-red-600 bg-white rounded-lg opacity-0 tooltip">
+                                    <div id="tooltip-right" role="tooltip" class="absolute z-10 w-64 invisible inline-block px-3 py-2 text-xs border border-red-600 bg-white rounded-lg opacity-0 tooltip">
                                         Tragen Sie alle durch Sie verrechneten Kabelanschlüssen ein.
                                         Alle KAi Produkte von Sunrise müssen Sie nicht mehr deklarieren.
                                         Diese werden wir unserseits dazu addieren und Ihnen im Nachgang rückbestätigen.
@@ -84,10 +80,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>                        
                         <button class="flex items-center cursor-pointer space-x-3" id="addButton"
                             onclick="duplicateDiv(event)">
-                            <img alt="" src="./assets/img/plus.svg" class="w-5">
+                            <img alt="" src="plus.svg" class="w-5">
                             <p class="color-secondary text-sm pb-1 font-bold" id="add_locality">Weitere Ortschaft hinzufügen
                             </p>
                         </button>
@@ -96,29 +92,29 @@
                                 <label for="KabelanschlussPreisProMonat" class="text-sm" id="basic_price">Grundpreis für den
                                     Kabelanschluss pro Monat</label>
                                 <input required type="text" id="KabelanschlussPreisProMonat" name="KabelanschlussPreisProMonat"
-                                    class="h-8 w-16 border-2 border-solid border-gray-300 rounded md:w-24 lg:w-24 float-right" pattern="[0-9]+"
+                                    class="h-8 w-16 border-2 border-solid border-gray-300 rounded md:w-24 lg:w-24 float-right"
                                     title="Bitte geben Sie eine Zahl ein">
                             </div>
                             <div class="">
                                 <label for="Urheberrechte" class="text-sm" id="copyrights">Obligatorische Urheberrechte
                                     (GT1)</label>
                                 <input required type="text" id="Urheberrechte" name="Urheberrechte"
-                                    class="h-8 w-16 border-2 border-solid border-gray-300 rounded md:w-24 lg:w-24 float-right" pattern="[0-9]+"
+                                    class="h-8 w-16 border-2 border-solid border-gray-300 rounded md:w-24 lg:w-24 float-right"
                                     title="Bitte geben Sie eine Zahl ein">
                             </div>
                             <div class="">
                                 <label for="Total_MwSt" class="text-sm" id="totalMwSt">Total MwSt, 8.1%</label>
-                                <input checked id="MwSt_Befreit" type="checkbox" value="yes" name="MwSt_Befreit"
-                                    class="w-4 h-4 ml-10 text-red-600 bg-gray-100 border-gray-300 rounded">
+                                <input id="MwSt_Befreit" type="checkbox" value="yes" name="MwSt_Befreit"
+                                    class="w-4 h-4 ml-10 text-red-600 bg-gray-100 border-gray-300 rounded" onchange="toggleTotalMwSt()">
                                 <label for="MwSt_Befreit" class="text-xs" id="mwstCheck">MwSt befreit</label>
                                 <input required type="text" id="Total_MwSt" name="Total_MwSt"
-                                    class="h-8 w-16 border-2 border-solid border-gray-300 rounded md:w-24 lg:w-24 float-right" pattern="[0-9]+"
+                                    class="h-8 w-16 border-2 border-solid border-gray-300 rounded md:w-24 lg:w-24 float-right"
                                     title="Bitte geben Sie eine Zahl ein">
                             </div>
                             <div class="">
                                 <label for="Total" class="label font-bold text-sm" id="total">Total, inkl. MwSt.</label>
                                 <input required type="text" id="Total" name="Total"
-                                    class="h-8 w-16 border-2 border-solid border-gray-300 rounded md:w-24 lg:w-24 float-right" pattern="[0-9]+"
+                                    class="h-8 w-16 border-2 border-solid border-gray-300 rounded md:w-24 lg:w-24 float-right"
                                     title="Bitte geben Sie eine Zahl ein">
                             </div>
 
